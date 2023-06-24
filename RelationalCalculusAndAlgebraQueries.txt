@@ -1,0 +1,40 @@
+-- Relational Calculus Queries --
+
+The query below retrieves all videos uploaded by channel 3.
+σ(videoChId = 3)(video)
+
+The query below retrieves video names and descriptions from the video table.
+Π(videoName, description)(video)
+
+The query below retrieves videos that have both like and comment interactions.
+(Π(videoId)(liking) ∩ Π(commVideoId)(comment))
+
+The query below retrieves users that are both subscribed to channel 2 and 3.
+(Π(accUserId)(subscriptions ⨝ (σ(subToChId = 2)(channel))) ∩ Π(accUserId)(subscriptions ⨝ (σ(subToChId = 3)(channel))))
+
+The query below retrieves videos both liked by user 1 and 2.
+(Π(likeVideoId)(liking ⨝ (σ(likeFromChId = 1)(channel))) ∩ Π(likeVideoId)(liking ⨝ (σ(likeFromChId = 2)(channel))))
+
+The query below retrieves video names and channel names for each video.
+video ⨝ channel (videoChId = chId)
+
+The query below retrieves channels that have published at least a video.
+Π(chId)(video)
+
+The query below retrieves the videos that are liked by either user 1 or user 2, but not both.
+(Π(likeVideoId)(liking ⨝ (σ(likeFromChId = 1)(channel)))) ∪ (Π(likeVideoId)(liking ⨝ (σ(likeFromChId = 2)(channel)))) - (Π(likeVideoId)(liking ⨝ (σ(likeFromChId = 1)(channel))) ∩ Π(likeVideoId)(liking ⨝ (σ(likeFromChId = 2)(channel))))
+
+-- Relational Calculus Queries --
+
+The query below retrieves the names of all users who have a channel. 
+{user.userName | ∃chId,chName,chUserId (channel(chId,chName,chUserId) ∧ user.userId = chUserId)}
+
+The query below retrieves the names of users and the names of their subscribed channels
+{user.userName, channel.chName | ∃subId, subFromChId, subToChId, subToChName (subscriptions(subId, subFromChId, subToChId, subToChName) ∧ user.userId = subFromChId ∧ channel.chId = subToChId)}
+
+The query below retrieves the users that are subscribed to channel 3. You can change the id number to retrieve it for any other channel.
+{user.userName | ∃subFromChId, subToChId (subscriptions(subFromChId, subToChId) ∧ user.userId = subFromChId ∧ subToChId = 3)}
+
+The query below retrieves likes for the video whose id is 3. You can change the id number to retrieve it for any other video.
+{liking.likeFromChId | ∃liking, video (liking.likeVideoId = video.videoId ∧ video.videoId = 3)}
+
