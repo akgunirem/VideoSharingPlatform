@@ -2,9 +2,9 @@
 
 ## About
 
-This project was made using Oracle SQL within the scope of Bahçeşehir University Database Management Systems course.
+This project was made using Oracle SQL within the scope of Bahçeşehir University Database Management Systems course. It is a database system with seven tables and three data entries for each table, with various queries including SQL, Relational Algebra, Relational Calculus.
 
-The video sharing platform will allow users to upload their own videos or watch the other videos uploaded by other users (such as YouTube). Users can interact with videos by liking or commenting. 
+Selected topic for this project was to design a video sharing platform that will allow users to upload their own videos or watch the other videos uploaded by other users (such as YouTube). Users can interact with videos by liking or commenting. 
 
 ## Project
 
