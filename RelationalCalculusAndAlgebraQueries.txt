@@ -1,4 +1,4 @@
--- Relational Calculus Queries --
+-- Relational Algebra Queries --
 
 The query below retrieves all videos uploaded by channel 3.
 σ(videoChId = 3)(video)
